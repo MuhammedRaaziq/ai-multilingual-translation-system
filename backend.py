@@ -32,7 +32,6 @@ def translate_per_student(data):
         translated = translation_cache[cache_key]
     else:
         try:
-            # Using GoogleTranslator for better reliability
             translated = GoogleTranslator(source='en', target=lang).translate(text)
             translation_cache[cache_key] = translated
         except Exception as e:
