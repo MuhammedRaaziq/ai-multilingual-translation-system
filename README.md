@@ -1,125 +1,146 @@
-# 🎓 AI-Based Multilingual Lecture Translation System
+# 🌍 AI-Based Multilingual Lecture Translation System
 
-## 📌 Overview
-This project is an AI-based multilingual lecture translation system designed to assist first-year university students in understanding lectures in real time. It captures live lecturer speech, processes it and translates it into multiple South African languages (isiZulu, isiXhosa and Afrikaans), improving accessibility and equitability in higher education.
-
----
-
-## 🚀 Features
-
-### 👨‍🏫 Lecturer Panel
-- Live speech-to-text capture using browser microphone
-- Real-time broadcasting of lecture content
-- Start/stop microphone control
-- Live preview of spoken text
-
-### 🎓 Student Panel
-- Real-time lecture text display
-- Instant multilingual translation
-- Language selection (isiZulu, isiXhosa, Afrikaans)
-- Optional voice output (text-to-speech)
-- Dark mode support
-- Live system status indicator
-- Adjustable volume and reading speed
+A real-time AI-powered lecture translation platform designed to improve accessibility and inclusivity in higher education, specifically for first-year Computer Science students in multilingual environments such as South Africa. This system translates live lectures from English into **isiZulu, isiXhosa and Afrikaans** using AI-based Speech Recognition (ASR) and Neural Machine Translation. (NMT).
 
 ---
 
-## 🧠 System Architecture
+## 🚀 Overview
 
-The system follows a real-time event-driven architecture:
+Many students in South African universities face a language barrier due to lectures being delivered in English, while majority of them do not have it as their first language. This system solves that problem by providing:
 
-1. Lecturer speaks into microphone  
-2. Browser Speech Recognition API converts speech to text  
-3. Text is sent to the Flask backend using Socket.IO  
-4. Backend processes translation using GoogleTranslator (deep-translator)  
-5. Translated output is sent back to connected students  
-6. Student interface displays translated text and optionally reads it aloud using speech synthesis  
+- 🎤 Real-time lecture speech capture
+- 🧠 AI-based text translation
+- 💬 Live subtitles in multiple languages
+- 🔊 Optional text-to-speech output
+- 🌐 Web-based interface for students and lecturers
 
 ---
 
-## 🛠️ Tech Stack
+## 🧠 Key Features
 
-### Frontend
-- HTML5
-- CSS3 (Custom UI + Dark Mode)
-- JavaScript (ES6)
-- Socket.IO (Real-time communication)
-- Web Speech API (Speech recognition & synthesis)
+### 🎧 Real-Time Lecture Processing
+- Captures lecturer speech using browser microphone
+- Streams live text to all connected students
+
+### 🌍 Multilingual Translation
+Supports:
+- isiZulu (`zu`)
+- isiXhosa (`xh`)
+- Afrikaans (`af`)
+
+### ⚡ Smart Caching System
+- Reduces repeated API calls
+- Improves translation speed and efficiency
+
+### 🔊 Text-to-Speech (Optional)
+- Converts translated text into natural speech
+- Adjustable volume and speech rate
+
+### 📡 Live System Status
+- Displays real-time system state (Active / Idle)
+- Connection feedback for users
+
+---
+
+## 🏗️ System Architecture
+
+Lecturer Speech  
+→ Browser Speech Recognition (ASR)  
+→ Flask + Socket.IO Server  
+→ GoogleTranslator (NMT)  
+→ Translation Cache  
+→ Student Interface  
+→ Optional Speech Synthesis (TTS)
+
+---
+
+## 🧰 Tech Stack
 
 ### Backend
 - Python 3
 - Flask
 - Flask-SocketIO
-- deep-translator (Google Translate wrapper)
+- deep-translator (GoogleTranslator)
+
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
+- Web Speech API (ASR + TTS)
+- Socket.IO Client
 
 ---
 
-## 📂 Project Structure
+## 📁 Project Structure
 
-ai-translation-system/  
-│  
-├── backend.py  
-├── requirements.txt  
-├── README.md  
-│  
-├── templates/  
-│   ├── lecturer.html  
-│   └── student.html  
+```text
+project/
+│
+├── backend.py                 # Flask backend + Socket.IO logic
+├── templates/
+│   ├── lecturer.html      # Lecturer interface
+│   └── student.html       # Student interface
+│
+└── README.md
+```
 
----
+## ⚙️ Installation
 
-## ⚙️ Installation & Setup
+1. Clone repository:
+```bash
+git clone https://github.com/yourusername/multilingual-lecture-translator.git
+cd multilingual-lecture-translator
 
-1. Clone the repository  
-git clone https://github.com/your-username/ai-translation-system.git  
+2. Create virtual environment:
+python -m venv venv
 
-2. Navigate into project folder  
-cd ai-translation-system  
+3. Activate:
+source venv/bin/activate   # Mac/Linux
+venv\Scripts\activate      # Windows
 
-3. Install dependencies  
-pip install -r requirements.txt  
+4. Install dependencies:
+pip install flask flask-socketio deep-translator
+```
 
-4. Run backend server  
-python backend.py  
+## ▶️ Run the Application
+python backend.py
+Then open in browser:
 
-5. Open in browser  
+- Student Interface:
+http://localhost:5000/student
 
-Lecturer Panel:  
-http://127.0.0.1:5000  
+- Lecturer Interface:
+http://localhost:5000/
 
-Student Panel:  
-http://127.0.0.1:5000/student  
+## 🔄 Socket Events
+- send_text → Sends lecturer speech
+- process_translation → Broadcasts English text
+- request_translation → Requests translation per student
+- receive_translation → Returns translated output
 
----
+## 🧩 Backend Logic
+- Flask-SocketIO handles real-time communication
+- deep-translator performs neural machine translation
+- Translation caching reduces API usage and improves speed
+- Error handling ensures fallback responses if translation fails
 
-## 🌍 Supported Languages
-- isiZulu (zu)  
-- isiXhosa (xh)  
-- Afrikaans (af)  
+## 🎓 Use Case
 
----
-
-## 💡 Key Innovation
-- Real-time lecture translation system using web technologies  
-- Supports multilingual education in South African universities  
-- Reduces language barriers for first-year students  
-- Lightweight browser-based system (no installation required for users)  
-
----
+This system is designed for:
+- First-year Computer Science students
+- Multilingual classrooms
+- Higher education accessibility solutions
+- Real-time lecture assistance systems
 
 ## ⚠️ Limitations
-- Requires stable internet connection  
-- Depends on browser speech recognition accuracy  
-- Translation quality depends on GoogleTranslator service  
-- Works best in Chrome browser  
-
----
+- Supports only 3 South African languages
+- Requires stable internet connection
+- Limited handling of idioms and slang
+- One-way communication (lecturer → student only)
 
 ## 🔮 Future Improvements
-- Offline AI translation model (NLP-based)  
-- User authentication system (students/lecturers)  
-- Save lecture transcripts to database  
-- Add more African languages  
-- Deploy system online using cloud hosting (AWS / Render / Vercel)  
-
----
+- Add all 12 official South African languages
+- Enable bidirectional communication
+- Integrate custom-trained NMT model
+- Add lecture recording and playback
+- Improve accuracy for technical Computer Science terminology
