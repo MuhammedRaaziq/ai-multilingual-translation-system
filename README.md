@@ -1,6 +1,6 @@
 # 🌍 AI-Based Multilingual Lecture Translation System
 
-A real-time AI-powered lecture translation platform designed to improve accessibility and inclusivity in higher education, specifically for first-year Computer Science students in South Africa. This system translates live lectures from English into **isiZulu, isiXhosa and Afrikaans** using AI-based Speech Recognition (ASR), Text To Speech (TTS) and Neural Machine Translation(NMT).
+A real-time AI-powered lecture translation platform designed to improve accessibility and inclusivity in higher education, specifically for first-year Computer Science students in South Africa. This system translates live lectures from English into **isiZulu, isiXhosa and Afrikaans** using AI-based Speech Recognition (ASR), Text To Speech (TTS) and Neural Machine Translation (NMT).
 
 ---
 
@@ -144,3 +144,6 @@ This system is designed for:
 - Integrate custom-trained NMT model
 - Add lecture recording and playback
 - Improve accuracy for technical Computer Science terminology
+
+---
+Advancing AI in Higher Education
