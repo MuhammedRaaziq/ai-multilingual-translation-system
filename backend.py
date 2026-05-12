@@ -5,7 +5,6 @@ from deep_translator import GoogleTranslator
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-# In-memory cache to save API hits
 translation_cache = {}
 
 @app.route('/')
@@ -18,17 +17,16 @@ def student():
 
 @socketio.on('send_text')
 def handle_text(data):
-    text = data['text'].strip()
+    text =data['text'].strip()
     if not text:
         return
-    # Broadcast raw English to everyone
     socketio.emit('process_translation', {'english': text})
 
 @socketio.on('request_translation')
 def translate_per_student(data):
     text = data['text']
-    lang = data['language']
-    cache_key = f"{text}-{lang}"
+    lang= data['language']
+    cache_key= f"{text}-{lang}"
 
     if cache_key in translation_cache:
         translated = translation_cache[cache_key]
@@ -41,7 +39,6 @@ def translate_per_student(data):
             translated = "[Translation Timeout]"
             print(f"Error translating to {lang}: {e}")
 
-    # Send back only to the student who requested it
     socketio.emit('receive_translation', {
         'english': text,
         'translated': translated
