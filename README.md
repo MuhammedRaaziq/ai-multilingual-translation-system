@@ -1,14 +1,14 @@
 # 🌍 AI-Based Multilingual Lecture Translation System
 
-A real-time AI-powered lecture translation platform designed to improve accessibility and inclusivity in higher education, specifically for first-year Computer Science students in multilingual environments such as South Africa. This system translates live lectures from English into **isiZulu, isiXhosa and Afrikaans** using AI-based Speech Recognition (ASR) and Neural Machine Translation. (NMT).
+A real-time AI-powered lecture translation platform designed to improve accessibility and inclusivity in higher education, specifically for first-year Computer Science students in South Africa. This system translates live lectures from English into **isiZulu, isiXhosa and Afrikaans** using AI-based Speech Recognition (ASR), Text To Speech (TTS) and Neural Machine Translation(NMT).
 
 ---
 
 ## 🚀 Overview
 
-Many students in South African universities face a language barrier due to lectures being delivered in English, while majority of them do not have it as their first language. This system solves that problem by providing:
+A large number of students in South African universities face a language barrier due to lectures being delivered in English, while majority of them do not have it as their first language. This system provides a solution by providing:
 
-- 🎤 Real-time lecture speech capture
+- 🎤 Real-time lecture speech capturing
 - 🧠 AI-based text translation
 - 💬 Live subtitles in multiple languages
 - 🔊 Optional text-to-speech output
@@ -16,7 +16,7 @@ Many students in South African universities face a language barrier due to lectu
 
 ---
 
-## 🧠 Key Features
+## 🧠 Key Features Of The System
 
 ### 🎧 Real-Time Lecture Processing
 - Captures lecturer speech using browser microphone
@@ -121,7 +121,7 @@ http://localhost:5000/
 ## 🧩 Backend Logic
 - Flask-SocketIO handles real-time communication
 - deep-translator performs neural machine translation
-- Translation caching reduces API usage and improves speed
+- Translation caching reduces API usage and improves efficiency
 - Error handling ensures fallback responses if translation fails
 
 ## 🎓 Use Case
